@@ -8,47 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    
-    @State private var red = 150.0
-    @State private var green = 150.0
-    @State private var blue = 150.0
-    
-    @FocusState private var isInputActive: Bool
+    @State private var redSliderValue = Double.random(in: 0...255)
+    @State private var greenSliderValue = Double.random(in: 0...255)
+    @State private var blueSliderValue = Double.random(in: 0...255)
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                Color(.systemYellow).ignoresSafeArea()
-                VStack(spacing: 40) {
-                    ColorView(red: red, green: green, blue: blue)
-                    
-                    VStack {
-                        ColorSliderView(sliderValue: $red, color: .red)
-                        ColorSliderView(sliderValue: $green, color: .green)
-                        ColorSliderView(sliderValue: $blue, color: .blue)
-                    }
-                    .frame(height: 120)
-                    .focused($isInputActive)
-                    .toolbar {
-                        ToolbarItemGroup(placement: .keyboard) {
-                            Spacer()
-                            Button("Done") {
-                                isInputActive = false
-                            }
-                        }
-                    }
-                    Spacer()
+        ZStack {
+            Color(.yellow)
+                .edgesIgnoringSafeArea(.all)
+            VStack {
+                ColorView(color: UIColor(red: CGFloat(redSliderValue / 255), green: CGFloat(greenSliderValue / 255), blue: CGFloat(blueSliderValue / 255), alpha: 1))
+                
+                VStack {
+                    ColorSliderStack(sliderValue: $redSliderValue, textFieldValue: String(Int(redSliderValue)), color: .red)
+                    ColorSliderStack(sliderValue: $greenSliderValue, textFieldValue: String(Int(greenSliderValue)), color: .green)
+                    ColorSliderStack(sliderValue: $blueSliderValue, textFieldValue: String(Int(blueSliderValue)), color: .blue)
                 }
-                .padding()
+                Spacer()
             }
         }
     }
 }
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ZStack {
-            ContentView()
-        }
+        ContentView()
     }
 }
-
