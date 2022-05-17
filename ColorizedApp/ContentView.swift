@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  ColorizedApp
 //
-//  Created by Евгения Аникина on 16.05.2022.
+//  Created by Евгения Аникина on 17.05.2022.
 //
 
 import SwiftUI
@@ -44,9 +44,9 @@ struct ContentView: View {
         }
     }
 }
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
     }
 }
+
