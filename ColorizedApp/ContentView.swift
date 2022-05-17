@@ -18,7 +18,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color(.systemBrown).ignoresSafeArea()
+                Color(.systemYellow).ignoresSafeArea()
                 VStack(spacing: 40) {
                     ColorView(red: red, green: green, blue: blue)
                     
@@ -46,7 +46,9 @@ struct ContentView: View {
 }
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ZStack {
+            ContentView()
+        }
     }
 }
 
